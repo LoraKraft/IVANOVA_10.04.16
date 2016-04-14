@@ -1,4 +1,5 @@
 <?php
+require_once "15.html";
 function clearData($data, $type = 'i'){
     switch ($type) {
         case 'i':
@@ -7,7 +8,7 @@ function clearData($data, $type = 'i'){
         case 's':
             return trim(strip_tags($data));
             break;
-        }
+    }
 }
 $output = "";
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
@@ -25,23 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
             else
                 $output .= $number1 / $number2;
             break;
-        default: $output = "unknown operator! '$operator'";
+        default: $output = "unknown operator! $operator";
     }
 }
-?>
 
-<form action = "<?php $_SERVER['PHP_SELF']?>" method = "post">
-    Number 1: <br>
-    <input type = "text" name = "number1"><br>
-    Operator: <br>
-    <input type = "text" name = "operator"><br>
-    Number 2:<br>
-    <input type  = "text" name = "number2"><br>
-    <input type = "submit" value = "count">
-</form>
-
-<?php
 if ($output){
     echo $output;
 }
-?>
